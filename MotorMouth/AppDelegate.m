@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-//#import "SearchViewController.h"
-#import "CollectionViewController.h"
+#import "SearchViewController.h"
+//#import "CollectionViewController.h"
 #import "Reachability.h"
 #import "MainViewController.h"
 
@@ -59,8 +59,8 @@ void uncaughtExceptionHandler(NSException *exception) {
     UIViewController *viewController1 = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     
     
-    //UIViewController *viewController2 = [[SearchViewController alloc] initWithStyle:UITableViewStylePlain];
-    UIViewController *viewController2 = [[CollectionViewController alloc] initWithNibName:@"CollectionViewController" bundle:nil];
+    UIViewController *viewController2 = [[SearchViewController alloc] initWithStyle:UITableViewStylePlain];
+    //UIViewController *viewController2 = [[CollectionViewController alloc]initWithNibName:@"CollectionViewController" bundle:nil];
     
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController1];
