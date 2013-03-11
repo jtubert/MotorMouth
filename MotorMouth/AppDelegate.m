@@ -56,40 +56,40 @@ void uncaughtExceptionHandler(NSException *exception) {
         application.applicationIconBadgeNumber = 0;
         [[PFInstallation currentInstallation] saveEventually];
     }
-
+    
     /*
-    UIViewController *viewController1 = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    
-    
-    //UIViewController *viewController2 = [[SearchViewController alloc] initWithStyle:UITableViewStylePlain];
-    //UIViewController *viewController2 = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];    
-    UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [aFlowLayout setItemSize:CGSizeMake(100, 100)];
-    [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];        
-    UIViewController *viewController2 = [[HomeViewController alloc] initWithCollectionViewLayout:aFlowLayout];
-    
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController1];
-    
-    UINavigationController *navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
-
-    
-    self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[navController, navController2];
-    
-    [[self.tabBarController.tabBar.items objectAtIndex:0] setTitle:@"Add"];
-    [[self.tabBarController.tabBar.items objectAtIndex:1] setTitle:@"Search"];
-    
-    [[self.tabBarController.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"first.png"]];
-    [[self.tabBarController.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"second.png"]];
-    */
+     UIViewController *viewController1 = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+     
+     
+     //UIViewController *viewController2 = [[SearchViewController alloc] initWithStyle:UITableViewStylePlain];
+     //UIViewController *viewController2 = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+     UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+     [aFlowLayout setItemSize:CGSizeMake(100, 100)];
+     [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+     UIViewController *viewController2 = [[HomeViewController alloc] initWithCollectionViewLayout:aFlowLayout];
+     
+     
+     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController1];
+     
+     UINavigationController *navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
+     
+     
+     self.tabBarController = [[UITabBarController alloc] init];
+     self.tabBarController.viewControllers = @[navController, navController2];
+     
+     [[self.tabBarController.tabBar.items objectAtIndex:0] setTitle:@"Add"];
+     [[self.tabBarController.tabBar.items objectAtIndex:1] setTitle:@"Search"];
+     
+     [[self.tabBarController.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"first.png"]];
+     [[self.tabBarController.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"second.png"]];
+     */
     
     
     loc = [Location new];
     [loc getLocation];
     
     
-    self.navController=[[UINavigationController alloc] init];    
+    self.navController=[[UINavigationController alloc] init];
     UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
     [aFlowLayout setItemSize:CGSizeMake(100, 100)];
     [aFlowLayout setHeaderReferenceSize:CGSizeMake(320, 44)];
@@ -106,7 +106,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     //self.window.rootViewController = viewController1;
     
-        
+    
     
     //self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -203,7 +203,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -219,17 +219,17 @@ void uncaughtExceptionHandler(NSException *exception) {
 }
 
 /*
-// Optional UITabBarControllerDelegate method.
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-}
-*/
+ // Optional UITabBarControllerDelegate method.
+ - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+ {
+ }
+ */
 
 /*
-// Optional UITabBarControllerDelegate method.
-- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
-{
-}
-*/
+ // Optional UITabBarControllerDelegate method.
+ - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
+ {
+ }
+ */
 
 @end
