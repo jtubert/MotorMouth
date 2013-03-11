@@ -10,6 +10,7 @@
 #import "Consts.h"
 #import "Reachability.h"
 #import "mmObject.h"
+#import "DefaultPhotoCell.h"
 
 #define DEFAULTKEYS [self.itemsDic.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]
 #define FILTEREDKEYS [self.filteredArrayKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]
@@ -81,14 +82,16 @@
     
 }
 
-
-
-
+- (void)viewWillAppeared:(BOOL)animated
+{
+    [self hidesSearchBar];
+    [super viewWillAppear:YES];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	//NSLog(@"ListViewController viewDidLoad");
-    //[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     [super viewDidLoad];
     [Flurry logEvent:@"SEARCH_VIEW"];
@@ -107,8 +110,7 @@
     
     self.itemsDic = [NSMutableDictionary dictionary];
     
-    self.selectedSearchFilter = 4;
-    
+    self.selectedSearchFilter = 4;   
     
     // Create a search bar
 	self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
@@ -142,12 +144,18 @@
                                                target: self
                                                action: @selector(displayMyEntriesOnly)];
     
-   
+    [self hidesSearchBar];
 
 	
 }
 
 #pragma mark - searchBar
+
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    //[self.tableView reloadData];
+    [self hidesSearchBar];
+}
 
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
     //@"Plate",@"City",@"State",@"Zip",@"All"
@@ -394,16 +402,25 @@
 	return self.filteredArray.count;
 }
 
-/*
+- (void)hidesSearchBar
+{
+    CGSize searchSize = self.searchDC.searchBar.bounds.size;
+    //not complete
+    [self.tableView setContentOffset:CGPointMake(0, searchSize.height)];
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	return 94;
 }
-*/
 
 // Return a cell for the ith row
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *CellIdentifier = @"Cell";
+	
+   
+    
+    
+    static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {

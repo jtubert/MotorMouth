@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Location.h"
 
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>{
     Location* loc;
     
 }
+
+@property (strong, nonatomic) UINavigationController* navController;
 
 @property (strong, nonatomic) UIWindow *window;
 

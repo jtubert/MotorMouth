@@ -46,15 +46,16 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
-    
-    
-    
+    [super viewDidLoad];    
     [Flurry logEvent:@"PLATE_VIEW"];
     
     
     [imageView setImage:myImage];
+    
+    UIButton *logoView = [[UIButton alloc] initWithFrame:CGRectMake(0,0,103,44)];
+    [logoView setBackgroundImage:[UIImage imageNamed:@"header.png"] forState:UIControlStateNormal];
+    [logoView setUserInteractionEnabled:NO];
+    self.navigationItem.titleView = logoView;
     
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [delegate startUpdatingLocation];
@@ -81,7 +82,7 @@
 - (BOOL)shouldUploadImage:(UIImage *)anImage {
     
     UIImage *resizedImage = [anImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
-    UIImage *thumbnailImage = [anImage thumbnailImage:86.0f transparentBorder:0.0f cornerRadius:10.0f interpolationQuality:kCGInterpolationDefault];
+    UIImage *thumbnailImage = [anImage thumbnailImage:100.0f transparentBorder:0.0f cornerRadius:0.0f interpolationQuality:kCGInterpolationDefault];
     
     // JPEG to decrease file size and enable faster uploads & downloads
     NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);

@@ -7,10 +7,12 @@
 //
 
 #import "AppDelegate.h"
-//#import "SearchViewController.h"
-#import "CollectionViewController.h"
+#import "SearchViewController.h"
+#import "HomeViewController.h"
 #import "Reachability.h"
 #import "MainViewController.h"
+#import "SubclassConfigViewController.h"
+
 
 
 @implementation AppDelegate
@@ -55,12 +57,16 @@ void uncaughtExceptionHandler(NSException *exception) {
         [[PFInstallation currentInstallation] saveEventually];
     }
 
-
+    /*
     UIViewController *viewController1 = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     
     
     //UIViewController *viewController2 = [[SearchViewController alloc] initWithStyle:UITableViewStylePlain];
-    UIViewController *viewController2 = [[CollectionViewController alloc] initWithNibName:@"CollectionViewController" bundle:nil];
+    //UIViewController *viewController2 = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];    
+    UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [aFlowLayout setItemSize:CGSizeMake(100, 100)];
+    [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];        
+    UIViewController *viewController2 = [[HomeViewController alloc] initWithCollectionViewLayout:aFlowLayout];
     
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController1];
@@ -76,12 +82,33 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     [[self.tabBarController.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"first.png"]];
     [[self.tabBarController.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"second.png"]];
+    */
     
     
     loc = [Location new];
     [loc getLocation];
     
-    self.window.rootViewController = self.tabBarController;
+    
+    self.navController=[[UINavigationController alloc] init];    
+    UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [aFlowLayout setItemSize:CGSizeMake(100, 100)];
+    [aFlowLayout setHeaderReferenceSize:CGSizeMake(320, 44)];
+    
+    [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    UIViewController *firstController = [[HomeViewController alloc] initWithCollectionViewLayout:aFlowLayout];
+    [self.navController pushViewController:firstController animated:NO];
+    self.navController.navigationBar.tintColor = [UIColor blackColor];
+    
+    self.window.rootViewController = self.navController;
+    
+    
+    //UIViewController *viewController1 = [[SubclassConfigViewController alloc] initWithNibName:@"SubclassConfigViewController" bundle:nil];
+    
+    //self.window.rootViewController = viewController1;
+    
+        
+    
+    //self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     
     
