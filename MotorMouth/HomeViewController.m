@@ -429,11 +429,11 @@
 */
 - (void)hidesSearchBar{
     if(self.showGridView){
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+        //[self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     }else{
         CGSize searchSize = self.searchDC.searchBar.bounds.size;
         //not complete
-        [self.tableView setContentOffset:CGPointMake(0, searchSize.height)];
+        //[self.tableView setContentOffset:CGPointMake(0, searchSize.height)];
     }
     
     
