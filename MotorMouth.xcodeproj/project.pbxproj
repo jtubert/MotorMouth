@@ -101,6 +101,8 @@
 		1D8FF4C416E6790B0073F1FA /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D8FF4B816E6790B0073F1FA /* Twitter.png */; };
 		1D8FF4C516E6790B0073F1FA /* TwitterDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D8FF4B916E6790B0073F1FA /* TwitterDown.png */; };
 		1DA0B54616F6589A00EA7374 /* SaveLocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA0B54516F6589A00EA7374 /* SaveLocalDataManager.m */; };
+		1DA0B54B16F67F8300EA7374 /* PlateContinueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA0B54916F67F8300EA7374 /* PlateContinueViewController.m */; };
+		1DA0B54C16F67F8300EA7374 /* PlateContinueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DA0B54A16F67F8300EA7374 /* PlateContinueViewController.xib */; };
 		1DA844CC16B84F3D000A5822 /* MM-Logo-Gigantic.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA844C416B84F3D000A5822 /* MM-Logo-Gigantic.png */; };
 		1DA844D816B853D3000A5822 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA844D216B84F82000A5822 /* Default@2x.png */; };
 		1DA844E216B96AC1000A5822 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA844E116B96AC1000A5822 /* Crashlytics.framework */; };
@@ -249,6 +251,9 @@
 		1D8FF4B916E6790B0073F1FA /* TwitterDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TwitterDown.png; path = login/assets/TwitterDown.png; sourceTree = "<group>"; };
 		1DA0B54416F6589A00EA7374 /* SaveLocalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveLocalDataManager.h; sourceTree = "<group>"; };
 		1DA0B54516F6589A00EA7374 /* SaveLocalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveLocalDataManager.m; sourceTree = "<group>"; };
+		1DA0B54816F67F8300EA7374 /* PlateContinueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateContinueViewController.h; sourceTree = "<group>"; };
+		1DA0B54916F67F8300EA7374 /* PlateContinueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateContinueViewController.m; sourceTree = "<group>"; };
+		1DA0B54A16F67F8300EA7374 /* PlateContinueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlateContinueViewController.xib; sourceTree = "<group>"; };
 		1DA844BD16B84F3D000A5822 /* 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57x57.png; path = Assets/57x57.png; sourceTree = SOURCE_ROOT; };
 		1DA844BE16B84F3D000A5822 /* 72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72x72.png; path = Assets/72x72.png; sourceTree = SOURCE_ROOT; };
 		1DA844BF16B84F3D000A5822 /* 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114x114.png; path = Assets/114x114.png; sourceTree = SOURCE_ROOT; };
@@ -456,6 +461,7 @@
 				1D8FF4A116E676DD0073F1FA /* 1 - Login / Register */,
 				1DEAA5E416F3D487005BC10C /* 2 - Settings */,
 				1DEAA5E616F3D50F005BC10C /* 3 - Plate  */,
+				1DA0B54716F67EFE00EA7374 /* 4 - Plate Continue */,
 				1DEAA5E516F3D4D5005BC10C /* ***** old / garbage */,
 				1D5B7C091689142800D04E76 /* MapViewController.h */,
 				1D5B7C0A1689142800D04E76 /* MapViewController.m */,
@@ -577,6 +583,16 @@
 				1D8FF4B916E6790B0073F1FA /* TwitterDown.png */,
 			);
 			name = assets;
+			sourceTree = "<group>";
+		};
+		1DA0B54716F67EFE00EA7374 /* 4 - Plate Continue */ = {
+			isa = PBXGroup;
+			children = (
+				1DA0B54816F67F8300EA7374 /* PlateContinueViewController.h */,
+				1DA0B54916F67F8300EA7374 /* PlateContinueViewController.m */,
+				1DA0B54A16F67F8300EA7374 /* PlateContinueViewController.xib */,
+			);
+			name = "4 - Plate Continue";
 			sourceTree = "<group>";
 		};
 		1DEAA5E316F3D457005BC10C /* 0 - Home */ = {
@@ -734,6 +750,7 @@
 				1D1990C416E7C589007DE409 /* border.png in Resources */,
 				1D6F509D16EAC831001A2F89 /* settings_button.png in Resources */,
 				1D6F50A316EACD3A001A2F89 /* SettingsViewController.xib in Resources */,
+				1DA0B54C16F67F8300EA7374 /* PlateContinueViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +827,7 @@
 				1D8FF4AC16E676EA0073F1FA /* MySignUpViewController.m in Sources */,
 				1D6F50A216EACD3A001A2F89 /* SettingsViewController.m in Sources */,
 				1DA0B54616F6589A00EA7374 /* SaveLocalDataManager.m in Sources */,
+				1DA0B54B16F67F8300EA7374 /* PlateContinueViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
