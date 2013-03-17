@@ -946,7 +946,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Steven Harrington (TB449TPX2W)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/MAMP/htdocs/git/iphone/MotorMouth\"",
+					.,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MotorMouth/MotorMouth-Prefix.pch";
@@ -956,8 +956,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/MAMP/htdocs/git/iphone/MotorMouth/Flurry\"",
-					"\"$(SYSTEM_APPS_DIR)/MAMP/htdocs/git/iphone/MotorMouth/TestFlightSDK1.1\"",
+					"\"./Flurry\"",
+					"\"./TestFlightSDK1.1\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "403FEA74-66EE-4D73-B68B-CA3D10381390";
@@ -977,7 +977,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Steven Harrington (TB449TPX2W)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/MAMP/htdocs/git/iphone/MotorMouth\"",
+					.,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MotorMouth/MotorMouth-Prefix.pch";
@@ -987,8 +987,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/MAMP/htdocs/git/iphone/MotorMouth/Flurry\"",
-					"\"$(SYSTEM_APPS_DIR)/MAMP/htdocs/git/iphone/MotorMouth/TestFlightSDK1.1\"",
+					"\"./Flurry\"",
+					"\"./TestFlightSDK1.1\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "403FEA74-66EE-4D73-B68B-CA3D10381390";
