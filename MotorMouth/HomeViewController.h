@@ -29,6 +29,8 @@
     BOOL showAllEntries;
     
     UITableView *tableView;
+    
+    BOOL showGridView;
 
 }
 
@@ -37,6 +39,8 @@
 @property (nonatomic, strong) NSDate *lastRefresh;
 
 @property (nonatomic) BOOL showAllEntries;
+
+@property (nonatomic) BOOL showGridView;
 
 @property (nonatomic) NSInteger selectedSearchFilter;
 

@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "SaveLocalDataManager.h"
 
 @interface SettingsViewController ()
 
@@ -23,10 +24,38 @@
     return self;
 }
 
+-(IBAction)logout:(id)sender{
+    [PFUser logOut];
+    logoutButton.hidden=YES;
+}
+
+
+-(IBAction)changeViewSeg{
+    [SaveLocalDataManager saveInteger:changeViewSegment.selectedSegmentIndex andKey:@"changeViewSegment"];
+}
+
+-(IBAction)changeSortSeg{
+	[SaveLocalDataManager saveInteger:changeSortSegment.selectedSegmentIndex andKey:@"changeSortSegment"];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    int viewInt = [SaveLocalDataManager getInteger:@"changeViewSegment"];
+    int sortInt = [SaveLocalDataManager getInteger:@"changeSortSegment"];
+    
+    changeViewSegment.selectedSegmentIndex = viewInt;
+    changeSortSegment.selectedSegmentIndex = sortInt;
+    
+    //NSLog(@"%@",[SaveLocalDataManager getString:@"test"]);
+    
+    if (![PFUser currentUser]) {
+        logoutButton.hidden=YES;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController{
+    IBOutlet UISegmentedControl *changeViewSegment;
+    IBOutlet UISegmentedControl *changeSortSegment;
+    IBOutlet UIButton *logoutButton;
+}
+
+-(IBAction)changeViewSeg;
+
+-(IBAction)changeSortSeg;
+
+- (IBAction)logout:(id)sender;
+
 
 @end

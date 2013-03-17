@@ -13,6 +13,7 @@
 #import "mmObject.h"
 #import "Consts.h"
 #import "SettingsViewController.h"
+#import "SaveLocalDataManager.h"
 
 #define DEFAULTKEYS [self.itemsDic.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]
 #define FILTEREDKEYS [self.filteredArrayKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]
@@ -32,39 +33,87 @@
 @synthesize itemsArr;
 @synthesize objArr;
 @synthesize showAllEntries;
+@synthesize showGridView;
 @synthesize selectedSearchFilter;
 @synthesize lastRefresh;
 @synthesize tableView;
 
+#pragma mark - viewController
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    int viewInt = [SaveLocalDataManager getInteger:@"changeViewSegment"];
+    
+    if(viewInt == 0){
+        self.showGridView = YES;
+    }else{
+        self.showGridView = NO;
+    }
+    
+    
+    if(self.showGridView){
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.tableView.userInteractionEnabled = NO;
+        
+        [self.collectionView addSubview:self.searchBar];
+        
+        [self.collectionView reloadData];
+    }else{
+        self.tableView.backgroundColor = [UIColor whiteColor];
+        self.tableView.userInteractionEnabled = YES;
+        
+        [self.searchBar removeFromSuperview];
+        self.tableView.tableHeaderView = self.searchBar;
+    }
+    
+    [self.tableView reloadData];
+    
+    
+    [self performSelector:@selector(hidesSearchBar) withObject:nil afterDelay:1];   
+    
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    int viewInt = [SaveLocalDataManager getInteger:@"changeViewSegment"];
+    
+    if(viewInt == 0){
+        self.showGridView = YES;
+    }else{
+        self.showGridView = NO;
+    }
+    
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onImageAdded:) name:@"addImage" object:nil];
-    
-    [self createTableViewForSearch];
-    
-    [self createCameraButtonView];
-    
-    self.collectionView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    
+    self.collectionView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);    
     self.itemsDic = [NSMutableDictionary dictionary];
     
+    [self createTableViewForSearch];    
+    [self createCameraButtonView];    
+    [self addSettingsButton];
     
+    
+}
+
+- (void) addSettingsButton{
     UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,27,25)];
+    
+    UIButton *settingsButton2 = [[UIButton alloc] initWithFrame:CGRectMake(0,0,27,25)];
+    
     [settingsButton setBackgroundImage:[UIImage imageNamed:@"settings_button.png"] forState:UIControlStateNormal];
     [settingsButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
     settingsButton.backgroundColor = [UIColor clearColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton2];
+
 }
 
 - (void) showSettings{
-    NSLog(@"showSettings");
+    //NSLog(@"showSettings");
     SettingsViewController* vc = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -103,9 +152,11 @@
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    self.tableView.backgroundColor = [UIColor clearColor];
     
-    self.tableView.userInteractionEnabled = NO;
+    if(self.showGridView){
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.tableView.userInteractionEnabled = NO;
+    }
     
 	self.selectedSearchFilter = 4;
     
@@ -114,7 +165,13 @@
 	self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
 	self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
 	self.searchBar.keyboardType = UIKeyboardTypeAlphabet;
-	[self.collectionView addSubview:self.searchBar];
+	
+    
+    if(self.showGridView){
+        [self.collectionView addSubview:self.searchBar];
+    }else{
+        self.tableView.tableHeaderView = self.searchBar;
+    }
     
     
     
@@ -135,6 +192,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 110;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -167,9 +228,6 @@
     PFFile *file = item.thumbnail;
     
     
-    //cell.textLabel.text = [item objectForKey:@"licensePlateNumber"];
-    //cell.detailTextLabel.text = [item objectForKey:@"subLocality"];
-    //PFFile *file = [item objectForKey:kPAPPhotoThumbnailKey];
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
             UIImage *image = [UIImage imageWithData:data];
@@ -179,10 +237,6 @@
         }
     }];
     
-    
-    
-    
-    
     return cell;
     
 }
@@ -191,7 +245,12 @@
 - (NSInteger)tableView:(UITableView *)tView numberOfRowsInSection:(NSInteger)section
 {
 	if (tView == self.tableView){
-        return 0;
+        if(self.showGridView){
+            return 0;
+        }else{
+            return self.objArr.count;
+        }
+        
     }
     
     //@"Plate",@"City",@"State",@"Zip",@"All"
@@ -369,7 +428,15 @@
 }
 */
 - (void)hidesSearchBar{
-    //[self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    if(self.showGridView){
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    }else{
+        CGSize searchSize = self.searchDC.searchBar.bounds.size;
+        //not complete
+        [self.tableView setContentOffset:CGPointMake(0, searchSize.height)];
+    }
+    
+    
     //NSLog(@"count: %u",self.collectionView.visibleCells.count);
 }
 
@@ -504,7 +571,13 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     //[super collectionView:collectionView numberOfItemsInSection:section];
-   return self.objects.count;
+    NSLog(@"");
+    
+   if(self.showGridView){
+       return self.objects.count;
+   }else{
+       return 0;
+   }
 }
 
 

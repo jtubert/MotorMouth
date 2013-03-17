@@ -24,24 +24,8 @@
               
     } else {
        
-    }
-    
-    
-    
-    
-    /*
-    
-    [PFCloud callFunctionInBackground:@"hello" withParameters:@{} block:^(NSString *result, NSError *error) {
-        if (!error) {
-            // result is @"Hello world!"
-        }
-    }];
-     */
-    
-    
-    
+    }        
 }
-
 
 - (BOOL) isLoggedIn{
     if ([PFUser currentUser]) {
@@ -50,10 +34,8 @@
     } else {
         NSLog(@"user is NOT logged in");
         return NO;
-    }
-    
+    }    
 }
-
 
 
 -(IBAction) getPhoto:(id) sender {
