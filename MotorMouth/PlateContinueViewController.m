@@ -7,32 +7,148 @@
 //
 
 #import "PlateContinueViewController.h"
+#import "MessagesViewController.h"
 
-@interface PlateContinueViewController ()
-
-@end
 
 @implementation PlateContinueViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+@synthesize scrollView = _scrollView;
+@synthesize pageControl = _pageControl;
+
+@synthesize pageImages = _pageImages;
+@synthesize pageViews = _pageViews;
+
+#pragma mark -
+
+- (void)loadVisiblePages {
+    // First, determine which page is currently visible
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    
+    // Update the page control
+    self.pageControl.currentPage = page;
+    
+    // Work out which pages we want to load
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    // Purge anything before the first page
+    for (NSInteger i=0; i<firstPage; i++) {
+        [self purgePage:i];
     }
-    return self;
+    for (NSInteger i=firstPage; i<=lastPage; i++) {
+        [self loadPage:i];
+    }
+    for (NSInteger i=lastPage+1; i<self.pageImages.count; i++) {
+        [self purgePage:i];
+    }
 }
 
-- (void)viewDidLoad
-{
+- (void)loadPage:(NSInteger)page {
+    if (page < 0 || page >= self.pageImages.count) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    // Load an individual page, first seeing if we've already loaded it
+    UIView *pageView = [self.pageViews objectAtIndex:page];
+    if ((NSNull*)pageView == [NSNull null]) {
+        CGRect frame = self.scrollView.bounds;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0.0f;
+        frame.size.height = 210.0f;
+        
+        //UIImageView *newPageView = [[UIImageView alloc] initWithImage:[self.pageImages objectAtIndex:page]];
+        //newPageView.contentMode = UIViewContentModeScaleAspectFit;
+        //newPageView.frame = frame;
+        
+        MessagesViewController *mvc = [[MessagesViewController alloc] initWithNibName:@"MessagesViewController" bundle:nil];
+        mvc.view.frame = frame;
+        
+        [self.scrollView addSubview:mvc.view];
+        [self.pageViews replaceObjectAtIndex:page withObject:mvc.view];
+        
+    }
+}
+
+- (void)purgePage:(NSInteger)page {
+    if (page < 0 || page >= self.pageImages.count) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    // Remove a page from the scroll view and reset the container array
+    UIView *pageView = [self.pageViews objectAtIndex:page];
+    if ((NSNull*)pageView != [NSNull null]) {
+        [pageView removeFromSuperview];
+        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
+    }
+}
+
+
+#pragma mark -
+
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"Paged";
+    
+    // Set up the image we want to scroll & zoom and add it to the scroll view
+    self.pageImages = [NSArray arrayWithObjects:
+                       [UIImage imageNamed:@"photo1.png"],
+                       [UIImage imageNamed:@"photo2.png"],
+                       [UIImage imageNamed:@"photo3.png"],
+                       [UIImage imageNamed:@"photo4.png"],
+                       [UIImage imageNamed:@"photo5.png"],
+                       nil];
+    
+    NSInteger pageCount = self.pageImages.count;
+    
+    // Set up the page control
+    self.pageControl.currentPage = 0;
+    self.pageControl.numberOfPages = pageCount;
+    
+    // Set up the array to hold the views for each page
+    self.pageViews = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < pageCount; ++i) {
+        [self.pageViews addObject:[NSNull null]];
+    }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // Set up the content size of the scroll view
+    CGSize pagesScrollViewSize = self.scrollView.frame.size;
+    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageImages.count, pagesScrollViewSize.height);
+    
+    // Load the initial set of pages that are on screen
+    [self loadVisiblePages];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    
+    self.scrollView = nil;
+    self.pageControl = nil;
+    self.pageImages = nil;
+    self.pageViews = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // Load the pages which are now on screen
+    [self loadVisiblePages];
+    
+    [scrollView setContentOffset: CGPointMake(scrollView.contentOffset.x, oldY)];
+    // or if you are sure you wanna it always on top:
+    // [aScrollView setContentOffset: CGPointMake(aScrollView.contentOffset.x, 0)];
 }
 
 @end

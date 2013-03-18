@@ -10,6 +10,9 @@
 #import "MyLogInViewController.h"
 #import "MySignUpViewController.h"
 #import "PlateViewController.h"
+
+#import "PlateContinueViewController.h"
+
 #import "mmObject.h"
 #import "Consts.h"
 #import "SettingsViewController.h"
@@ -344,9 +347,9 @@
     UIImage *img = (UIImage*)[notification object];    
     //add to photoalbum    
     [photoAlbum saveImage:img andAlbumName:@"MotorMouth"];    
-	PlateViewController* pvc = [[PlateViewController alloc] initWithNibName:@"PlateViewController" bundle:nil];
+	PlateContinueViewController* pvc = [[PlateContinueViewController alloc] initWithNibName:@"PlateContinueViewController" bundle:nil];
     NSLog(@"pvc: %@",pvc);
-    [pvc setImage:img];   
+    //[pvc setImage:img];
     [[self navigationController] pushViewController:pvc animated:YES];    
 }
 

@@ -12,6 +12,7 @@
 #import "UIImage+RoundedCornerAdditions.h"
 #import "Location.h"
 #import "AppDelegate.h"
+#import "PlateContinueViewController.h"
 
 
 @interface PlateViewController ()
@@ -67,6 +68,11 @@
     [self shouldUploadImage:myImage];
     
     [Flurry logEvent:@"PLATE_SUBMIT"];
+    
+    
+    
+    PlateContinueViewController* vc = [[PlateContinueViewController alloc] initWithNibName:@"PlateContinueViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)happy:(id)sender{
@@ -146,7 +152,7 @@
     mmObject.ACL = photoACL;
     [mmObject saveInBackground];
     
-    [self onSubmit];
+    //[self onSubmit];
     
     
     return YES;
