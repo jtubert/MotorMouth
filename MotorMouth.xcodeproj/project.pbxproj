@@ -499,9 +499,6 @@
 				1DEAA5E616F3D50F005BC10C /* 3 - Plate  */,
 				1DA0B54716F67EFE00EA7374 /* 4 - Plate Continue */,
 				1DEAA5E516F3D4D5005BC10C /* ***** old / garbage */,
-				1D5B7C091689142800D04E76 /* MapViewController.h */,
-				1D5B7C0A1689142800D04E76 /* MapViewController.m */,
-				1D5B7C0B1689142800D04E76 /* MapViewController.xib */,
 				1D5B7C0816890FED00D04E76 /* other classes */,
 				1D5C29C01684CCB800289DFD /* assets */,
 				1D8CCC75167FE72300260DAE /* Supporting Files */,
@@ -680,6 +677,9 @@
 		1DEAA5E516F3D4D5005BC10C /* ***** old / garbage */ = {
 			isa = PBXGroup;
 			children = (
+				1D5B7C091689142800D04E76 /* MapViewController.h */,
+				1D5B7C0A1689142800D04E76 /* MapViewController.m */,
+				1D5B7C0B1689142800D04E76 /* MapViewController.xib */,
 				1D5B7BCF168905CC00D04E76 /* MainViewController.h */,
 				1D5C29B51684CBB500289DFD /* MainViewController.m */,
 				1D8CCC8D167FE72300260DAE /* SearchViewController.h */,
@@ -828,7 +828,6 @@
 				1D6F509D16EAC831001A2F89 /* settings_button.png in Resources */,
 				1D6F50A316EACD3A001A2F89 /* SettingsViewController.xib in Resources */,
 				1DA0B54C16F67F8300EA7374 /* PlateContinueViewController.xib in Resources */,
-<<<<<<< HEAD
 				1DA0B56016F68B1600EA7374 /* photo5.png in Resources */,
 				1DA0B56116F68B1600EA7374 /* photo4.png in Resources */,
 				1DA0B56216F68B1600EA7374 /* photo3.png in Resources */,
@@ -837,7 +836,6 @@
 				1DA0B56B16F6990C00EA7374 /* MessagesViewController.xib in Resources */,
 				1DA0B56F16F69EA200EA7374 /* message-bg-on.png in Resources */,
 				1DA0B57016F69EA200EA7374 /* message-bg-off.png in Resources */,
-=======
 				6E9AECA716F6821A00FC019B /* thumbs-down-off.png in Resources */,
 				6E9AECA816F6821A00FC019B /* thumbs-down-on.png in Resources */,
 				6E9AECA916F6821A00FC019B /* thumbs-up-off.png in Resources */,
@@ -846,7 +844,6 @@
 				6E9AECAE16F68BCF00FC019B /* savecontinue.png in Resources */,
 				6E9AECB016F691B700FC019B /* savecontinueDown.png in Resources */,
 				6E9AECB216F6924400FC019B /* toolbar-logo.png in Resources */,
->>>>>>> 01dd45f6a087c5a9a4faf91ce3a9fe37a9135072
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
