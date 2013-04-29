@@ -112,6 +112,8 @@
 		1DA0B56B16F6990C00EA7374 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DA0B56916F6990C00EA7374 /* MessagesViewController.xib */; };
 		1DA0B56F16F69EA200EA7374 /* message-bg-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA0B56D16F69EA200EA7374 /* message-bg-on.png */; };
 		1DA0B57016F69EA200EA7374 /* message-bg-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA0B56E16F69EA200EA7374 /* message-bg-off.png */; };
+		1DA0B57816F7586400EA7374 /* message-horiz-line.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA0B57616F7586400EA7374 /* message-horiz-line.png */; };
+		1DA0B57916F7586400EA7374 /* message-vert-line.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA0B57716F7586400EA7374 /* message-vert-line.png */; };
 		1DA844CC16B84F3D000A5822 /* MM-Logo-Gigantic.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA844C416B84F3D000A5822 /* MM-Logo-Gigantic.png */; };
 		1DA844D816B853D3000A5822 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA844D216B84F82000A5822 /* Default@2x.png */; };
 		1DA844E216B96AC1000A5822 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA844E116B96AC1000A5822 /* Crashlytics.framework */; };
@@ -281,6 +283,8 @@
 		1DA0B56916F6990C00EA7374 /* MessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessagesViewController.xib; sourceTree = "<group>"; };
 		1DA0B56D16F69EA200EA7374 /* message-bg-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-bg-on.png"; sourceTree = "<group>"; };
 		1DA0B56E16F69EA200EA7374 /* message-bg-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-bg-off.png"; sourceTree = "<group>"; };
+		1DA0B57616F7586400EA7374 /* message-horiz-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-horiz-line.png"; sourceTree = "<group>"; };
+		1DA0B57716F7586400EA7374 /* message-vert-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-vert-line.png"; sourceTree = "<group>"; };
 		1DA844BD16B84F3D000A5822 /* 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57x57.png; path = Assets/57x57.png; sourceTree = SOURCE_ROOT; };
 		1DA844BE16B84F3D000A5822 /* 72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72x72.png; path = Assets/72x72.png; sourceTree = SOURCE_ROOT; };
 		1DA844BF16B84F3D000A5822 /* 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114x114.png; path = Assets/114x114.png; sourceTree = SOURCE_ROOT; };
@@ -648,6 +652,8 @@
 		1DA0B56C16F69E5D00EA7374 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				1DA0B57616F7586400EA7374 /* message-horiz-line.png */,
+				1DA0B57716F7586400EA7374 /* message-vert-line.png */,
 				1DA0B56D16F69EA200EA7374 /* message-bg-on.png */,
 				1DA0B56E16F69EA200EA7374 /* message-bg-off.png */,
 			);
@@ -844,6 +850,8 @@
 				6E9AECAE16F68BCF00FC019B /* savecontinue.png in Resources */,
 				6E9AECB016F691B700FC019B /* savecontinueDown.png in Resources */,
 				6E9AECB216F6924400FC019B /* toolbar-logo.png in Resources */,
+				1DA0B57816F7586400EA7374 /* message-horiz-line.png in Resources */,
+				1DA0B57916F7586400EA7374 /* message-vert-line.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

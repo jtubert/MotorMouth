@@ -55,8 +55,8 @@
     if ((NSNull*)pageView == [NSNull null]) {
         CGRect frame = self.scrollView.bounds;
         frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0.0f;
-        frame.size.height = 210.0f;
+        frame.origin.y = 165.0f;
+        //frame.size.height = 210.0f;
         
         //UIImageView *newPageView = [[UIImageView alloc] initWithImage:[self.pageImages objectAtIndex:page]];
         //newPageView.contentMode = UIViewContentModeScaleAspectFit;
